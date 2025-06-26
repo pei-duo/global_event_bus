@@ -47,6 +47,7 @@
 - 性能监控数据
 
 ## 🏗️ 核心架构
+
 ```plantext
 ┌───────────────────────────────────────┐
 │ Global Event Bus                      │
@@ -522,7 +523,7 @@ void main() {
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/global_event_bus.git
+git clone https://github.com/pei-duo/global_event_bus.git
 # 进入项目目录
 cd global_event_bus
 # 安装依赖
