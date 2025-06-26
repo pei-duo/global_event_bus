@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
   int _counter = 0;
   String _message = '等待事件...';
   String _userStatus = '未登录';
-  List<String> _notifications = [];
+  final List<String> _notifications = [];
   late List<StreamSubscription> _subscriptions;
 
   @override
