@@ -254,21 +254,22 @@ class UserLoginPage extends StatelessWidget {
           children: [
             const Text('选择一个用户登录：'),
             const SizedBox(height: 16),
+            // 修改用户列表为 Map 格式
             ...[
-              ('张三', 'zhangsan@example.com'),
-              ('李四', 'lisi@example.com'),
-              ('王五', 'wangwu@example.com'),
+              {'name': '张三', 'email': 'zhangsan@example.com'},
+              {'name': '李四', 'email': 'lisi@example.com'},
+              {'name': '王五', 'email': 'wangwu@example.com'},
             ].map(
               (user) => Card(
                 child: ListTile(
-                  title: Text(user.$1),
-                  subtitle: Text(user.$2),
+                  title: Text(user['name']!),
+                  subtitle: Text(user['email']!),
                   trailing: const Icon(Icons.login),
                   onTap: () {
                     final userData = UserData(
-                      id: user.$1.hashCode.toString(),
-                      name: user.$1,
-                      email: user.$2,
+                      id: user['name']!.hashCode.toString(),
+                      name: user['name']!,
+                      email: user['email']!,
                       loginTime: DateTime.now(),
                     );
                     
