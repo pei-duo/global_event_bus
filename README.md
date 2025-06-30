@@ -529,7 +529,7 @@ cd global_event_bus
 # 安装依赖
 flutter pub get
 # 运行示例
-cd exampleflutter run
+cd example && flutter run
 # 运行测试
 flutter test
 ```
