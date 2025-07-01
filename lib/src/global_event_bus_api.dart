@@ -8,8 +8,7 @@ import 'global_event_log.dart';
 ///
 /// 这是一个高性能、类型安全的全局事件分发系统，用于在应用程序的不同模块之间进行解耦通信。
 /// 采用观察者模式和流式处理架构，支持事件优先级、批量处理、日志监控等高级功能。
-
-
+///
 /// 便捷的全局事件管理器实例
 final globalEventBus = GlobalEventBus.instance;
 

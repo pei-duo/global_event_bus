@@ -1,6 +1,6 @@
 name: global_event_bus
 description: A high-performance, type-safe global event bus system for Flutter applications with priority support, batch processing, and comprehensive logging.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/pei-duo/global_event_bus
 repository: https://github.com/pei-duo/global_event_bus
 issue_tracker: https://github.com/pei-duo/global_event_bus/issues
@@ -25,7 +25,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.pedro.global_event_bus
+        package: com.example.global_event_bus
         pluginClass: GlobalEventBusPlugin
       ios:
         pluginClass: GlobalEventBusPlugin
