@@ -15,6 +15,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.0.4] - 2025-07-01
+
+### 🐛 修复
+
+- 修复了 Android 平台包名配置问题，解决插件引用时找不到主类的错误
+- 添加了 Android Kotlin 文件的包声明，确保包名与配置一致
+- 修复了测试文件中`dart:async`导入缺失的问题
+- 优化了插件的 Android 平台兼容性
+
+### 🔧 改进
+
+- 统一了 Android 包名为`com.example.global_event_bus`
+- 完善了 Kotlin 文件的包结构声明
+- 提升了插件在不同项目中的引用稳定性
+
+### 📝 文档
+
+- 更新了 Android 平台配置相关文档
+- 完善了插件集成指南
+
+---
+
 ## [0.0.3] - 2025-06-30
 
 ### 🚀 新功能
