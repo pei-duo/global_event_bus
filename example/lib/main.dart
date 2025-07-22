@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         listenerId: 'main_counter_listener',
         onEvent: (event) {
           setState(() {
-            _counter = event.data;
+            _counter = event.data ?? 0;
             _message = '收到计数器事件: ${event.data} (优先级: ${event.priority.name})';
           });
         },
@@ -73,8 +73,8 @@ class _HomePageState extends State<HomePage> {
         listenerId: 'user_status_listener',
         onEvent: (event) {
           setState(() {
-            _userStatus = event.data['status'] ?? '未知';
-            _message = '用户状态更新: ${event.data['status']}';
+            _userStatus = event.data?['status'] ?? '未知';
+            _message = '用户状态更新: ${event.data?['status']}';
           });
         },
       ),
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
         listenerId: 'notification_listener',
         onEvent: (event) {
           setState(() {
-            _notifications.insert(0, event.data);
+            _notifications.insert(0, event.data ?? '');
             if (_notifications.length > 5) {
               _notifications.removeLast();
             }

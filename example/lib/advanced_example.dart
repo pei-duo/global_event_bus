@@ -78,7 +78,7 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
         // 用户登录后发送欢迎事件
         sendGlobalEvent<String>(
           type: 'user_welcome',
-          data: '欢迎回来，${event.data.name}！',
+          data: '欢迎回来，${event.data?.name}！',
           priority: EventPriority.high,
         );
       },
@@ -89,7 +89,7 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
       listenerId: 'advanced_cart_listener',
       onEvent: (event) {
         setState(() {
-          _cartItems = event.data;
+          _cartItems = event.data ?? [];
         });
       },
     );
