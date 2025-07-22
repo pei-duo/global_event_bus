@@ -1,6 +1,6 @@
-# Changelog
+# 变更日志
 
-All notable changes to this project will be documented in this file.
+此项目的所有显著更改都将记录在此文件中。
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -12,6 +12,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 事件持久化支持
 - 事件重放功能
 - 更多的事件过滤器
+
+---
+
+## [0.0.5] - 2025-07-022
+
+### 🚀 新功能
+
+- 支持事件发送时可选 data 字段（GlobalEvent 类已修改为 T?类型）
+- 优化 global_event_manager.dart 的 sendEvent 方法实现
+
+### 🔧 改进
+
+- 增加对空 data 场景的类型校验
+- 更新相关测试用例覆盖无 data 参数的事件发送
 
 ---
 
@@ -36,12 +50,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 完善了插件集成指南
 
 ### ⚠️ 版本说明
-- 版本0.0.2和0.0.3因Android兼容性问题已撤回
-- 强烈建议所有用户升级到0.0.4版本
+
+- 版本 0.0.2 和 0.0.3 因 Android 兼容性问题已撤回
+- 强烈建议所有用户升级到 0.0.4 版本
 
 ---
 
-## [0.0.3] - 2025-06-30 
+## [0.0.3] - 2025-06-30
 
 ### 🚀 新功能
 

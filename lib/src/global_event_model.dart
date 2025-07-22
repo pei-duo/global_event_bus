@@ -57,7 +57,7 @@ abstract class BaseGlobalEvent {
 
 /// 泛型全局事件类
 class GlobalEvent<T> extends BaseGlobalEvent {
-  final T data;
+  final T? data;
 
   GlobalEvent({
     required super.type,

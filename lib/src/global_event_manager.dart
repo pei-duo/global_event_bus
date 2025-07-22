@@ -40,7 +40,7 @@ class GlobalEventManager {
   /// 发送特定类型的事件
   void sendEvent<T>({
     required String type,
-    required T data,
+    T? data,
     EventPriority priority = EventPriority.normal,
     Map<String, dynamic>? metadata,
   }) {
@@ -79,7 +79,7 @@ class GlobalEventManager {
   /// 安全发送事件（不会抛出异常）
   bool sendEventSafe<T>({
     required String type,
-    required T data,
+    T? data,
     EventPriority priority = EventPriority.normal,
     Map<String, dynamic>? metadata,
   }) {
@@ -104,8 +104,8 @@ class GlobalEventManager {
   /// 延迟发送事件
   void sendEventDelayed<T>({
     required String type,
-    required T data,
     required Duration delay,
+    T? data,
     EventPriority priority = EventPriority.normal,
     Map<String, dynamic>? metadata,
   }) {
