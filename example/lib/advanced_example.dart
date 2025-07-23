@@ -68,7 +68,7 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
 
   void _setupListeners() {
     // 监听用户登录事件
-    _userSubscription = listenGlobalEvent<UserData>(
+    _userSubscription = globalEventBus.listen<UserData>(
       listenerId: 'advanced_user_listener',
       onEvent: (event) {
         setState(() {
@@ -76,20 +76,20 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
         });
         
         // 用户登录后发送欢迎事件
-        sendGlobalEvent<String>(
+        globalEventBus.sendEvent<String>(
           type: 'user_welcome',
-          data: '欢迎回来，${event.data?.name}！',
+          data: '欢迎回来，${event.data.name}！',
           priority: EventPriority.high,
         );
       },
     );
 
     // 监听购物车更新事件
-    _cartSubscription = listenGlobalEvent<List<CartItem>>(
+    _cartSubscription = globalEventBus.listen<List<CartItem>>(
       listenerId: 'advanced_cart_listener',
       onEvent: (event) {
         setState(() {
-          _cartItems = event.data ?? [];
+          _cartItems = event.data;
         });
       },
     );
@@ -221,7 +221,7 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
                         _cartItems.clear();
                       });
                       
-                      sendGlobalEvent<String>(
+                      globalEventBus.sendEvent<String>(
                         type: 'user_logout',
                         data: '用户已登出',
                         priority: EventPriority.normal,
@@ -274,7 +274,7 @@ class UserLoginPage extends StatelessWidget {
                     );
                     
                     // 发送用户登录事件
-                    sendGlobalEvent<UserData>(
+                    globalEventBus.sendEvent<UserData>(
                       type: 'user_login',
                       data: userData,
                       priority: EventPriority.high,
@@ -342,7 +342,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
     }
     
     // 发送购物车更新事件
-    sendGlobalEvent<List<CartItem>>(
+    globalEventBus.sendEvent<List<CartItem>>(
       type: 'cart_updated',
       data: List.from(_localCart),
       priority: EventPriority.normal,

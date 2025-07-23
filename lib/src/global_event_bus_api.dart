@@ -40,13 +40,73 @@ class GlobalEventBus {
     );
   }
 
+  /// 发送无数据事件
+  void sendEventWithoutData({
+    required String type,
+    EventPriority priority = EventPriority.normal,
+    Map<String, dynamic>? metadata,
+  }) {
+    _manager.sendWithoutData(
+      type: type,
+      priority: priority,
+      metadata: metadata,
+    );
+  }
+
+  /// 安全发送事件（不会抛出异常）
+  bool sendEventSafe<T>({
+    required String type,
+    required T data,
+    EventPriority priority = EventPriority.normal,
+    Map<String, dynamic>? metadata,
+  }) {
+    return _manager.sendEventSafe<T>(
+      type: type,
+      data: data,
+      priority: priority,
+      metadata: metadata,
+    );
+  }
+
+  /// 延迟发送事件
+  void sendEventDelayed<T>({
+    required String type,
+    required Duration delay,
+    required T data,
+    EventPriority priority = EventPriority.normal,
+    Map<String, dynamic>? metadata,
+  }) {
+    _manager.sendEventDelayed<T>(
+      type: type,
+      delay: delay,
+      data: data,
+      priority: priority,
+      metadata: metadata,
+    );
+  }
+
   /// 监听事件
   StreamSubscription<BaseGlobalEvent> listen<T>({
     required String listenerId,
     required void Function(GlobalEvent<T> event) onEvent,
     List<String>? eventTypes,
+    void Function(Object error)? onError,
   }) {
     return _manager.addTypedListener<T>(
+      listenerId: listenerId,
+      onEvent: onEvent,
+      eventTypes: eventTypes,
+      onError: onError,
+    );
+  }
+
+  /// 一次性监听事件
+  StreamSubscription<BaseGlobalEvent> listenOnce<T>({
+    required String listenerId,
+    required void Function(GlobalEvent<T> event) onEvent,
+    List<String>? eventTypes,
+  }) {
+    return _manager.addOnceListener<T>(
       listenerId: listenerId,
       onEvent: onEvent,
       eventTypes: eventTypes,
@@ -58,83 +118,45 @@ class GlobalEventBus {
     _manager.removeListener(listenerId);
   }
 
+  /// 移除所有监听器
+  void removeAllListeners() {
+    _manager.removeAllListeners();
+  }
+
+  /// 清理过期监听器
+  void cleanupExpiredListeners() {
+    _manager.cleanupExpiredListeners();
+  }
+
   /// 配置日志
   void configureLogging(GlobalEventLogConfig config) {
     _manager.configureLogging(config);
   }
 
+  /// 启用/禁用批量发送模式
+  void setBatchMode(bool enabled, {int intervalMs = 100}) {
+    _manager.setBatchMode(enabled, intervalMs: intervalMs);
+  }
+
   /// 获取统计信息
   EventStats get stats => _manager.stats;
+
+  /// 获取当前监听器数量
+  int get listenerCount => _manager.listenerCount;
+
+  /// 获取所有监听器ID
+  List<String> get listenerIds => _manager.listenerIds;
+
+  /// 获取性能信息
+  Map<String, dynamic> get performanceInfo => _manager.performanceInfo;
+
+  /// 检查是否有指定的监听器
+  bool hasListener(String listenerId) {
+    return _manager.listenerIds.contains(listenerId);
+  }
 
   /// 销毁
   void dispose() {
     _manager.dispose();
   }
-}
-
-
-/// 便捷的事件发送方法
-void sendGlobalEvent<T>({
-  required String type,
-  required T data,
-  EventPriority priority = EventPriority.normal,
-  Map<String, dynamic>? metadata,
-}) {
-  globalEventBus.sendEvent<T>(
-    type: type,
-    data: data,
-    priority: priority,
-    metadata: metadata,
-  );
-}
-
-/// 便捷的类型安全监听方法
-StreamSubscription<BaseGlobalEvent> listenGlobalEvent<T>({
-  required String listenerId,
-  required void Function(GlobalEvent<T> event) onEvent,
-  List<String>? eventTypes,
-}) {
-  return globalEventBus.listen<T>(
-    listenerId: listenerId,
-    onEvent: onEvent,
-    eventTypes: eventTypes,
-  );
-}
-
-/// 便捷的全局事件注销方法
-void removeGlobalEventListener(String listenerId) {
-  globalEventBus.removeListener(listenerId);
-}
-
-/// 便捷的日志配置方法
-void configureGlobalEventLogging(GlobalEventLogConfig config) {
-  globalEventBus.configureLogging(config);
-}
-
-/// 快速配置开发环境日志
-void enableDebugLogging() {
-  configureGlobalEventLogging(GlobalEventLogConfig.debugConfig);
-}
-
-/// 快速配置生产环境日志
-void enableProductionLogging() {
-  configureGlobalEventLogging(GlobalEventLogConfig.productionConfig);
-}
-
-/// 快速禁用日志
-void disableLogging() {
-  configureGlobalEventLogging(GlobalEventLogConfig.silentConfig);
-}
-
-/// 启用批量模式（可选）
-///
-/// 批量模式下，事件发送会延迟一段时间（默认100ms），
-/// 并将多个相同类型的事件合并为一个批量事件。
-/// 这对于高频事件（如用户交互）非常有用，可以减少事件处理开销。
-///
-/// 注意：
-/// - 批量模式仅影响高频事件，对于低频率事件无效
-/// - 批量间隔时间可以根据应用需求调整
-void enableBatchMode({int intervalMs = 100}) {
-  globalEventBus.manager.setBatchMode(true, intervalMs: 100);
 }

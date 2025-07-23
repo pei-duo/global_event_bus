@@ -4,14 +4,14 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'global_event_bus'
-  s.version          = '0.0.1'
-  s.summary          = 'A new Flutter plugin project.'
+  s.version          = '0.0.6'  # 需要更新版本号
+  s.summary          = 'A high-performance, type-safe global event bus system for Flutter applications.'  # 需要更新描述
   s.description      = <<-DESC
-A new Flutter plugin project.
+A high-performance, type-safe global event bus system for Flutter applications with priority support, batch processing, and comprehensive logging.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/pei-duo/global_event_bus'  # 需要更新
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Pedro Pei' => 'pedro.pei@icloud.com' }  # 需要更新作者信息
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'

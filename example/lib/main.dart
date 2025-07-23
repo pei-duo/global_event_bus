@@ -58,33 +58,33 @@ class _HomePageState extends State<HomePage> {
   void _setupEventListeners() {
     _subscriptions = [
       // 监听计数器事件
-      listenGlobalEvent<int>(
+      globalEventBus.listen<int>(
         listenerId: 'main_counter_listener',
         onEvent: (event) {
           setState(() {
-            _counter = event.data ?? 0;
+            _counter = event.data;
             _message = '收到计数器事件: ${event.data} (优先级: ${event.priority.name})';
           });
         },
       ),
 
       // 监听用户状态事件
-      listenGlobalEvent<Map<String, dynamic>>(
+      globalEventBus.listen<Map<String, dynamic>>(
         listenerId: 'user_status_listener',
         onEvent: (event) {
           setState(() {
-            _userStatus = event.data?['status'] ?? '未知';
-            _message = '用户状态更新: ${event.data?['status']}';
+            _userStatus = event.data['status'] ?? '未知';
+            _message = '用户状态更新: ${event.data['status']}';
           });
         },
       ),
 
       // 监听通知事件
-      listenGlobalEvent<String>(
+      globalEventBus.listen<String>(
         listenerId: 'notification_listener',
         onEvent: (event) {
           setState(() {
-            _notifications.insert(0, event.data ?? '');
+            _notifications.insert(0, event.data);
             if (_notifications.length > 5) {
               _notifications.removeLast();
             }
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
             ? EventPriority.normal
             : EventPriority.low;
 
-    sendGlobalEvent<int>(
+    globalEventBus.sendEvent<int>(
       type: 'counter_updated',
       data: newValue,
       priority: priority,
@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
     final users = ['张三', '李四', '王五', '赵六'];
     final randomUser = users[Random().nextInt(users.length)];
 
-    sendGlobalEvent<Map<String, dynamic>>(
+    globalEventBus.sendEvent<Map<String, dynamic>>(
       type: 'user_status_changed',
       data: {
         'status': '已登录',
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
 
     // 延迟发送欢迎通知
     Timer(const Duration(seconds: 1), () {
-      sendGlobalEvent<String>(
+      globalEventBus.sendEvent<String>(
         type: 'notification_received',
         data: '欢迎 $randomUser！',
         priority: EventPriority.normal,
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _simulateUserLogout() {
-    sendGlobalEvent<Map<String, dynamic>>(
+    globalEventBus.sendEvent<Map<String, dynamic>>(
       type: 'user_status_changed',
       data: {'status': '已登出', 'logoutTime': DateTime.now().toIso8601String()},
       priority: EventPriority.normal,
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
     final randomNotification =
         notifications[Random().nextInt(notifications.length)];
 
-    sendGlobalEvent<String>(
+    globalEventBus.sendEvent<String>(
       type: 'notification_received',
       data: randomNotification,
       priority: EventPriority.low,
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
 
     // 快速发送多个事件
     for (int i = 1; i <= 5; i++) {
-      sendGlobalEvent<String>(
+      globalEventBus.sendEvent<String>(
         type: 'notification_received',
         data: '批量通知 $i',
         priority: EventPriority.low,

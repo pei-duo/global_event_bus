@@ -112,13 +112,13 @@ void main() {
     test('sendGlobalEvent should work', () async {
       final completer = Completer<GlobalEvent<String>>();
       
-      listenGlobalEvent<String>(
+      globalEventBus.listen<String>(
         listenerId: 'global_send_test',
         onEvent: (event) => completer.complete(event),
         eventTypes: ['global_send'],
       );
       
-      sendGlobalEvent<String>(
+      globalEventBus.sendEvent<String>(
         type: 'global_send',
         data: 'global_data',
         priority: EventPriority.critical,
@@ -133,12 +133,12 @@ void main() {
     test('listenGlobalEvent should work', () async {
       final receivedEvents = <GlobalEvent<int>>[];
       
-      final subscription = listenGlobalEvent<int>(
+      final subscription = globalEventBus.listen<int>(
         listenerId: 'global_listen_test',
         onEvent: (event) => receivedEvents.add(event),
       );
       
-      sendGlobalEvent<int>(
+      globalEventBus.sendEvent<int>(
         type: 'global_listen',
         data: 42,
       );

@@ -15,6 +15,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.0.6] - 2025-07-23
+
+### 🚀 新功能
+
+`GlobalEventBus` 类
+
+- **增强的事件发送 API**： 新增 `sendEventWithoutData()` 方法，支持发送无数据载荷的事件
+- **安全事件发送**：新增 `sendEventSafe()` 方法，提供不抛出异常的安全发送机制
+- **延迟事件发送**：新增 `sendEventDelayed()` 方法，支持延迟指定时间后发送事件
+- **一次性监听器**：新增 `listenOnce()` 方法，支持只触发一次的事件监听器
+- **批量监听器管理**：新增 `removeAllListeners()` 和 `cleanupExpiredListeners()` 方法
+- **监听器状态查询**：新增 `hasListener()` 方法检查指定监听器是否存在
+- **性能监控增强**：新增 `listenerCount`、`listenerIds` 和 `performanceInfo` 属性
+- **批量处理控制**：新增 `setBatchMode()` 方法，可动态启用/禁用批量处理模式
+
+### 🔧 改进
+
+- **API 完整性提升**：GlobalEventBus 类现在提供了更完整的事件管理功能
+- **错误处理增强**：所有监听器方法现在支持可选的 `onError` 回调参数
+- **类型安全优化**：改进了泛型事件的类型推断和安全性
+- **性能监控**：增强了事件统计和性能信息收集功能
+- **代码结构优化**：更好的封装性，隐藏了内部实现细节
+
+### 📝 文档
+
+- 完善了 GlobalEventBus 类的 API 文档
+- 添加了新功能的使用示例和最佳实践
+- 更新了性能优化相关的文档说明
+
+### 🐛 修复
+
+- 修复了 `sendEventDelayed()` 方法中 metadata 参数传递的问题
+- 优化了一次性监听器的自动清理机制
+- 改进了批量处理模式下的事件排序逻辑
+
+### ⚡ 性能优化
+
+- 优化了监听器查找和管理的性能
+- 改进了批量事件处理的效率
+- 减少了不必要的内存分配和垃圾回收
+
+---
+
 ## [0.0.5] - 2025-07-022
 
 ### 🚀 新功能
@@ -172,3 +215,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📝 文档 (Documentation)
 - ⚠️ 破坏性变更 (Breaking Changes)
 - 🎉 重要里程碑 (Major Milestones)
+- ⚡ 性能优化 (Performance)

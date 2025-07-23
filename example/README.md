@@ -1,16 +1,33 @@
-# global_event_bus_example
+# Global Event Bus Example
 
-Demonstrates how to use the global_event_bus plugin.
+这个示例项目展示了如何使用 `global_event_bus` 插件的各种功能。
 
-## Getting Started
+## 功能演示
 
-This project is a starting point for a Flutter application.
+### 基础示例 (main.dart)
+- 事件发送和监听
+- 不同优先级事件处理
+- 批量事件处理
+- 实时统计信息显示
 
-A few resources to get you started if this is your first Flutter project:
+### 高级示例 (advanced_example.dart)
+- 多页面事件通信
+- 类型安全的事件处理
+- 用户登录状态管理
+- 购物车状态同步
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 运行示例
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+cd example
+flutter pub get
+flutter run
+```
+
+## 主要特性展示
+
+1. **类型安全**: 使用泛型确保事件数据类型安全
+2. **优先级系统**: 支持 critical、high、normal、low 四个优先级
+3. **批量处理**: 高频事件的批量处理模式
+4. **性能监控**: 实时查看事件统计信息
+5. **多页面通信**: 跨页面的事件通信机制

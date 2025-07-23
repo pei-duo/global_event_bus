@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 
 import 'global_event_log.dart';
@@ -37,10 +35,24 @@ class GlobalEventManager {
     GlobalEventLogger.logDebug('日志配置已更新', context: 'GlobalEventManager');
   }
 
+  /// 新事件发送函数,
+  void sendWithoutData({
+    required String type,
+    EventPriority priority = EventPriority.normal,
+    Map<String, dynamic>? metadata,
+  }) {
+    sendEvent<void>(
+      type: type,
+      data: null,
+      priority: priority,
+      metadata: metadata,
+    );
+  }
+
   /// 发送特定类型的事件
   void sendEvent<T>({
     required String type,
-    T? data,
+    required T data,
     EventPriority priority = EventPriority.normal,
     Map<String, dynamic>? metadata,
   }) {
@@ -79,7 +91,7 @@ class GlobalEventManager {
   /// 安全发送事件（不会抛出异常）
   bool sendEventSafe<T>({
     required String type,
-    T? data,
+    required T data,
     EventPriority priority = EventPriority.normal,
     Map<String, dynamic>? metadata,
   }) {
@@ -105,7 +117,7 @@ class GlobalEventManager {
   void sendEventDelayed<T>({
     required String type,
     required Duration delay,
-    T? data,
+    required T data,
     EventPriority priority = EventPriority.normal,
     Map<String, dynamic>? metadata,
   }) {
@@ -351,12 +363,12 @@ class GlobalEventManager {
 
   /// 获取性能信息
   Map<String, dynamic> get performanceInfo => {
-    'listenerCount': listenerCount,
-    'totalEventsSent': _stats.totalEventsSent,
-    'totalEventsReceived': _stats.totalEventsReceived,
-    'eventTypeCount': Map.from(_stats.eventTypeCount),
-    'lastEventTime': _stats.lastEventTime?.toIso8601String(),
-    'batchEnabled': _batchEnabled,
-    'batchQueueSize': _batchQueue.length,
-  };
+        'listenerCount': listenerCount,
+        'totalEventsSent': _stats.totalEventsSent,
+        'totalEventsReceived': _stats.totalEventsReceived,
+        'eventTypeCount': Map.from(_stats.eventTypeCount),
+        'lastEventTime': _stats.lastEventTime?.toIso8601String(),
+        'batchEnabled': _batchEnabled,
+        'batchQueueSize': _batchQueue.length,
+      };
 }
