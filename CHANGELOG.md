@@ -15,7 +15,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.0.6] - 2025-07-23
+## [0.0.7]
+
+### 🔧 改进
+
+- **仓库迁移**：将主要仓库从 GitHub 迁移到 Gitee，提供更好的国内访问体验
+- **文档更新**：更新所有项目文档中的仓库链接，包括：
+  - `pubspec.yaml` 中的 homepage、repository 和 issue_tracker 链接
+  - `README.md` 中的克隆命令
+  - iOS 和 macOS podspec 文件中的 homepage 链接
+- **双仓库同步**：配置了 Gitee 和 GitHub 的双仓库同步机制，GitHub 作为备份仓库
+
+### 📝 文档
+
+- 更新项目主页链接为 Gitee 仓库
+- 更新问题反馈链接指向 Gitee Issues
+- 保持技术文档和第三方依赖的原有链接不变
+
+---
+
+## [0.0.6] 
 
 ### 🚀 新功能
 
@@ -58,7 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.0.5] - 2025-07-022
+## [0.0.5] 
 
 ### 🚀 新功能
 
@@ -72,7 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.0.4] - 2025-07-01
+## [0.0.4] 
 
 ### 🐛 修复
 
@@ -99,7 +118,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.0.3] - 2025-06-30
+## [0.0.3] 
 
 ### 🚀 新功能
 
@@ -134,7 +153,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.0.2] - 2025-06-27
+## [0.0.2] 
 
 ### 🚀 新功能
 
@@ -161,7 +180,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.0.1] - 2025-06-27
+## [0.0.1] 
 
 ### 🎉 首次发布
 

@@ -523,7 +523,7 @@ void main() {
 
 ```bash
 # 克隆仓库
-git clone https://github.com/pei-duo/global_event_bus.git
+git clone https://gitee.com/peiduo_734386/global_event_bus.git
 # 进入项目目录
 cd global_event_bus
 # 安装依赖

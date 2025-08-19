@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 A high-performance, type-safe global event bus system for Flutter applications with priority support, batch processing, and comprehensive logging.
                        DESC
-  s.homepage         = 'https://github.com/pei-duo/global_event_bus'  # 需要更新
+  s.homepage         = 'https://gitee.com/peiduo_734386/global_event_bus'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Pedro Pei' => 'pedro.pei@icloud.com' }  # 需要更新作者信息
   s.source           = { :path => '.' }
