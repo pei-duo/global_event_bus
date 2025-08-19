@@ -1,7 +1,7 @@
 # 🚀 Global Event Bus - 全局事件总线
 
 <div align="center">
-  <img src="assets/icons/animated_logo.svg" alt="Global Event Bus Logo" width="200" height="200">
+  <img src="assets/icons/animated_logo.svg" alt="Global Event Bus Logo" width="400" height="200">
 </div>
 
 [![pub package](https://img.shields.io/pub/v/global_event_bus.svg)](https://pub.dev/packages/global_event_bus)
