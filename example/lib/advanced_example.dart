@@ -17,11 +17,11 @@ class UserData {
   });
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'email': email,
-    'loginTime': loginTime.toIso8601String(),
-  };
+        'id': id,
+        'name': name,
+        'email': email,
+        'loginTime': loginTime.toIso8601String(),
+      };
 }
 
 // 购物车项目模型
@@ -39,11 +39,11 @@ class CartItem {
   });
 
   Map<String, dynamic> toJson() => {
-    'productId': productId,
-    'productName': productName,
-    'price': price,
-    'quantity': quantity,
-  };
+        'productId': productId,
+        'productName': productName,
+        'price': price,
+        'quantity': quantity,
+      };
 }
 
 // 主页面
@@ -74,7 +74,7 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
         setState(() {
           _currentUser = event.data;
         });
-        
+
         // 用户登录后发送欢迎事件
         globalEventBus.sendEvent<String>(
           type: 'user_welcome',
@@ -103,7 +103,8 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
   }
 
   double get _totalPrice {
-    return _cartItems.fold(0.0, (sum, item) => sum + (item.price * item.quantity));
+    return _cartItems.fold(
+        0.0, (sum, item) => sum + (item.price * item.quantity));
   }
 
   @override
@@ -145,9 +146,9 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
                 ),
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // 购物车信息
             Card(
               child: Padding(
@@ -169,7 +170,8 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
                             (item) => ListTile(
                               title: Text(item.productName),
                               subtitle: Text('数量: ${item.quantity}'),
-                              trailing: Text('¥${(item.price * item.quantity).toStringAsFixed(2)}'),
+                              trailing: Text(
+                                  '¥${(item.price * item.quantity).toStringAsFixed(2)}'),
                             ),
                           ),
                           const Divider(),
@@ -183,9 +185,9 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
                 ),
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // 操作按钮
             Wrap(
               spacing: 8,
@@ -220,7 +222,7 @@ class _AdvancedExamplePageState extends State<AdvancedExamplePage> {
                         _currentUser = null;
                         _cartItems.clear();
                       });
-                      
+
                       globalEventBus.sendEvent<String>(
                         type: 'user_logout',
                         data: '用户已登出',
@@ -272,7 +274,7 @@ class UserLoginPage extends StatelessWidget {
                       email: user['email']!,
                       loginTime: DateTime.now(),
                     );
-                    
+
                     // 发送用户登录事件
                     globalEventBus.sendEvent<UserData>(
                       type: 'user_login',
@@ -283,7 +285,7 @@ class UserLoginPage extends StatelessWidget {
                         'method': 'manual_selection',
                       },
                     );
-                    
+
                     Navigator.pop(context);
                   },
                 ),
@@ -306,7 +308,7 @@ class ShoppingPage extends StatefulWidget {
 
 class _ShoppingPageState extends State<ShoppingPage> {
   final List<CartItem> _localCart = [];
-  
+
   final List<Map<String, dynamic>> _products = [
     {'id': '1', 'name': 'iPhone 15', 'price': 5999.0},
     {'id': '2', 'name': 'MacBook Pro', 'price': 12999.0},
@@ -319,7 +321,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
     final existingIndex = _localCart.indexWhere(
       (item) => item.productId == product['id'],
     );
-    
+
     if (existingIndex >= 0) {
       // 增加数量
       final existingItem = _localCart[existingIndex];
@@ -340,7 +342,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
         ),
       );
     }
-    
+
     // 发送购物车更新事件
     globalEventBus.sendEvent<List<CartItem>>(
       type: 'cart_updated',
@@ -352,7 +354,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
         'totalItems': _localCart.length,
       },
     );
-    
+
     setState(() {});
   }
 
@@ -375,13 +377,16 @@ class _ShoppingPageState extends State<ShoppingPage> {
                   title: const Text('购物车'),
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: _localCart.map(
-                      (item) => ListTile(
-                        title: Text(item.productName),
-                        subtitle: Text('数量: ${item.quantity}'),
-                        trailing: Text('¥${(item.price * item.quantity).toStringAsFixed(2)}'),
-                      ),
-                    ).toList(),
+                    children: _localCart
+                        .map(
+                          (item) => ListTile(
+                            title: Text(item.productName),
+                            subtitle: Text('数量: ${item.quantity}'),
+                            trailing: Text(
+                                '¥${(item.price * item.quantity).toStringAsFixed(2)}'),
+                          ),
+                        )
+                        .toList(),
                   ),
                   actions: [
                     TextButton(

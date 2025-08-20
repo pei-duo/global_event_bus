@@ -39,8 +39,8 @@ abstract class BaseGlobalEvent {
     required this.type,
     this.priority = EventPriority.normal,
     this.metadata,
-  }) : timestamp = DateTime.now(),
-       eventId = _generateEventId();
+  })  : timestamp = DateTime.now(),
+        eventId = _generateEventId();
 
   static String _generateEventId() {
     // 使用更高效的ID生成策略

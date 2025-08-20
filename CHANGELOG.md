@@ -5,6 +5,50 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] 
+
+### 🔧 Code Quality Improvements
+- 修复测试文件中的代码风格问题
+- 优化构造函数使用const关键字提升性能
+- 通过静态代码分析检查，确保代码质量
+- 统一代码格式化标准
+
+---
+
+## [1.0.0]
+
+### 🎉 Major Release - Pure Dart Package
+
+#### ✨ Features
+- **BREAKING CHANGE**: 转换为纯Dart包，移除所有平台特定代码
+- 保持所有核心事件总线功能完整性
+- 简化包结构，提升性能和兼容性
+
+#### 🗑️ Removed
+- 移除平台插件配置和依赖
+- 删除 `getPlatformVersion()` 方法（非核心功能）
+- 移除所有原生平台目录（android, ios, linux, macos, windows）
+- 删除平台接口相关文件：
+  - `global_event_bus_platform_interface.dart`
+  - `global_event_bus_method_channel.dart`
+  - `global_event_bus_web.dart`
+
+#### 🔧 Technical Changes
+- 更新 `pubspec.yaml`，移除 `plugin_platform_interface` 和 `flutter_web_plugins` 依赖
+- 简化主入口文件 `global_event_bus.dart`
+- 更新测试文件，专注于核心事件总线功能测试
+
+#### 📈 Benefits
+- ✅ 更好的跨平台兼容性
+- ✅ 更简单的维护和部署
+- ✅ 更快的包加载速度
+- ✅ 减少依赖冲突风险
+
+#### 🔄 Migration Guide
+如果您之前使用了 `getPlatformVersion()` 方法，请移除相关调用。所有其他API保持不变。
+
+---
+
 ## [Unreleased]
 
 ### 🚀 计划新功能

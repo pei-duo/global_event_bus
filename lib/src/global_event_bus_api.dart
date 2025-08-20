@@ -3,7 +3,6 @@ import 'global_event_model.dart';
 import 'global_event_manager.dart';
 import 'global_event_log.dart';
 
-
 /// # 全局事件总线系统 (Global Event Bus System)
 ///
 /// 这是一个高性能、类型安全的全局事件分发系统，用于在应用程序的不同模块之间进行解耦通信。

@@ -108,14 +108,13 @@ class _HomePageState extends State<HomePage> {
     final newValue = _counter + 1;
 
     // 发送不同优先级的事件
-    final priority =
-        newValue % 4 == 0
-            ? EventPriority.critical
-            : newValue % 3 == 0
+    final priority = newValue % 4 == 0
+        ? EventPriority.critical
+        : newValue % 3 == 0
             ? EventPriority.high
             : newValue % 2 == 0
-            ? EventPriority.normal
-            : EventPriority.low;
+                ? EventPriority.normal
+                : EventPriority.low;
 
     globalEventBus.sendEvent<int>(
       type: 'counter_updated',
@@ -293,21 +292,20 @@ class _HomePageState extends State<HomePage> {
             Text('最近通知', style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 8),
             Expanded(
-              child:
-                  _notifications.isEmpty
-                      ? const Center(child: Text('暂无通知'))
-                      : ListView.builder(
-                        itemCount: _notifications.length,
-                        itemBuilder: (context, index) {
-                          return Card(
-                            child: ListTile(
-                              leading: const Icon(Icons.notifications),
-                              title: Text(_notifications[index]),
-                              subtitle: Text('第 ${index + 1} 条通知'),
-                            ),
-                          );
-                        },
-                      ),
+              child: _notifications.isEmpty
+                  ? const Center(child: Text('暂无通知'))
+                  : ListView.builder(
+                      itemCount: _notifications.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: ListTile(
+                            leading: const Icon(Icons.notifications),
+                            title: Text(_notifications[index]),
+                            subtitle: Text('第 ${index + 1} 条通知'),
+                          ),
+                        );
+                      },
+                    ),
             ),
           ],
         ),
@@ -378,9 +376,7 @@ class _StatsPageState extends State<StatsPage> {
                 ),
               ),
             ),
-
             const SizedBox(height: 16),
-
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -402,9 +398,7 @@ class _StatsPageState extends State<StatsPage> {
                 ),
               ),
             ),
-
             const SizedBox(height: 16),
-
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),

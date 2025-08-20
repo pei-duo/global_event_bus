@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="global_event_bus_example"
+        android:label="全局事件总线示例"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

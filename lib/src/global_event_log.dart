@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 
 import 'global_event_model.dart';
@@ -6,11 +5,11 @@ import 'global_event_model.dart';
 /// 日志级别枚举
 /// 用于控制日志输出的详细程度
 enum EventLogLevel {
-  none,    // 不输出日志
-  error,   // 只输出错误
+  none, // 不输出日志
+  error, // 只输出错误
   warning, // 输出警告和错误
-  info,    // 输出信息、警告和错误
-  debug,   // 输出所有日志
+  info, // 输出信息、警告和错误
+  debug, // 输出所有日志
 }
 
 /// 全局事件日志配置类
@@ -78,17 +77,17 @@ class GlobalEventLogConfig {
   /// 构造函数
   /// 所有参数都有默认值，可以根据需要选择性配置
   const GlobalEventLogConfig({
-    this.level = EventLogLevel.info,           // 默认信息级别
-    this.enabled = true,                       // 默认启用日志
-    this.showTimestamp = true,                 // 默认显示时间戳
-    this.showEventId = false,                  // 默认不显示事件ID
-    this.showPriority = true,                  // 默认显示优先级
-    this.showEventData = false,                // 默认不显示事件数据
-    this.showListenerInfo = true,              // 默认显示监听器信息
-    this.logPrefix = '[GlobalEvent]',           // 默认日志前缀
-    this.customLogger,                         // 默认为null，使用系统日志
-    this.eventTypeFilter,                      // 默认为null，不过滤事件类型
-    this.listenerIdFilter,                     // 默认为null，不过滤监听器
+    this.level = EventLogLevel.info, // 默认信息级别
+    this.enabled = true, // 默认启用日志
+    this.showTimestamp = true, // 默认显示时间戳
+    this.showEventId = false, // 默认不显示事件ID
+    this.showPriority = true, // 默认显示优先级
+    this.showEventData = false, // 默认不显示事件数据
+    this.showListenerInfo = true, // 默认显示监听器信息
+    this.logPrefix = '[GlobalEvent]', // 默认日志前缀
+    this.customLogger, // 默认为null，使用系统日志
+    this.eventTypeFilter, // 默认为null，不过滤事件类型
+    this.listenerIdFilter, // 默认为null，不过滤监听器
   });
 
   /// 创建默认配置
@@ -98,24 +97,24 @@ class GlobalEventLogConfig {
   /// 创建调试配置
   /// 适合开发调试时使用，显示更多详细信息
   static const GlobalEventLogConfig debugConfig = GlobalEventLogConfig(
-    level: EventLogLevel.debug,    // 显示所有级别日志
-    showEventId: true,             // 显示事件ID
-    showEventData: true,           // 显示事件数据
+    level: EventLogLevel.debug, // 显示所有级别日志
+    showEventId: true, // 显示事件ID
+    showEventData: true, // 显示事件数据
   );
 
   /// 创建生产环境配置
   /// 适合生产环境使用，只显示关键错误信息
   static const GlobalEventLogConfig productionConfig = GlobalEventLogConfig(
-    level: EventLogLevel.error,    // 只显示错误级别
-    showEventData: false,          // 不显示敏感数据
-    showListenerInfo: false,       // 不显示监听器详情
+    level: EventLogLevel.error, // 只显示错误级别
+    showEventData: false, // 不显示敏感数据
+    showListenerInfo: false, // 不显示监听器详情
   );
 
   /// 创建静默配置
   /// 完全关闭日志输出
   static const GlobalEventLogConfig silentConfig = GlobalEventLogConfig(
-    enabled: false,                // 禁用日志
-    level: EventLogLevel.none,     // 不输出任何级别
+    enabled: false, // 禁用日志
+    level: EventLogLevel.none, // 不输出任何级别
   );
 
   /// 复制并修改配置

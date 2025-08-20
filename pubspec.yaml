@@ -1,6 +1,6 @@
 name: global_event_bus
 description: A high-performance, type-safe global event bus system for Flutter applications with priority support, batch processing, and comprehensive logging.
-version: 0.0.7
+version: 1.0.1
 homepage: https://gitee.com/peiduo_734386/global_event_bus
 repository: https://gitee.com/peiduo_734386/global_event_bus
 issue_tracker: https://gitee.com/peiduo_734386/global_event_bus/issues
@@ -12,29 +12,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_web_plugins:
-    sdk: flutter
-  plugin_platform_interface: ^2.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
 
-flutter:
-  plugin:
-    platforms:
-      android:
-        package: com.example.global_event_bus
-        pluginClass: GlobalEventBusPlugin
-      ios:
-        pluginClass: GlobalEventBusPlugin
-      linux:
-        pluginClass: GlobalEventBusPlugin
-      macos:
-        pluginClass: GlobalEventBusPlugin
-      windows:
-        pluginClass: GlobalEventBusPluginCApi
-      web:
-        pluginClass: GlobalEventBusWeb
-        fileName: global_event_bus_web.dart

@@ -1,0 +1,36 @@
+# Example app and platform-specific files
+example/
+android/
+ios/
+linux/
+macos/
+web/
+windows/
+
+# Development files
+.vscode/
+.idea/
+.fvm/
+.fvmrc
+
+# Documentation build files
+doc/
+
+# Test coverage files
+coverage/
+
+# Build artifacts
+build/
+.dart_tool/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
